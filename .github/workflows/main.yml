@@ -27,12 +27,12 @@ jobs:
          echo ${{ github.repository_owner  }}
 
       
-      # - name: Run Node App
-      #   env:
-      #       NAME: "This is a test"
-      #       VALUE: "Something else"
-      #       PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-      #       REPO: ${{ github.repository }}
-      #       OWNER: ${{ github.repository_owner }}
-      #   run: |
-      #     npm start
+      - name: Run Node App
+        env:
+            NAME: "This is a test"
+            VALUE: "Something else"
+            PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+            REPO: ${{ github.repository }}
+            OWNER: ${{ github.repository_owner }}
+        run: |
+          npm start

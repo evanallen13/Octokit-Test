@@ -12,7 +12,7 @@ const ownerName = process.env.OWNER;
 const createVariable = (data) => {
 
     let url = 'POST '
-    url += "/repos/" + ownerName + "/" + repoName
+    url += "/repos/" + repoName
     url += '/actions/variables'
 
     return octokit.request(url, {
@@ -26,7 +26,7 @@ const createVariable = (data) => {
 const setVariable = (data) => {
 
     let url = 'PATCH '
-    url += "/repos/" + ownerName + "/" + repoName
+    url += "/repos/" + repoName
     url += '/actions/variables/' + name
 
     return octokit.request(url, {
@@ -40,7 +40,7 @@ const setVariable = (data) => {
 const getVariable = (varname) => {
 
     let url = 'GET '
-    url += "/repos/" + ownerName + "/" + repoName
+    url += "/repos/" + repoName
     url += '/actions/variables/' + varname
 
     return octokit.request(url, {
