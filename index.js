@@ -63,7 +63,7 @@ const increment = () => {
     if (exists()){
         let variable = getVariable(name)
         if( variable.value.match(/^[0-9]+$/) ) {
-            setVariable(variable.value + 1)
+            setVariable(parseInt(variable.value) + 1)
         }
     }
     else {
