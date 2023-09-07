@@ -23,7 +23,7 @@ jobs:
 
       - name: print something
         run: |
-         echo ${{ github.repository }}
+         echo ${{ github.repository_id }}
          echo ${{ github.repository_owner  }}
 
       
