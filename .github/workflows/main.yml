@@ -27,8 +27,8 @@ jobs:
       
       - name: Run Node.js application
         env:
-            NAME: "Something for the application"
-            VALUE: "Something else"
+            NAME: "Something_FOR"
+            VALUE: "Something_else"
             PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           touch .env
