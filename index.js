@@ -9,7 +9,7 @@ const octokit = github.getOctokit(token);
 const repoName = process.env.REPO;
 const ownerName = process.env.OWNER;
 
-const createVariable = (data) => {
+const createVariable = (value) => {
 
     let url = 'POST '
     url += "/repos/" + repoName
@@ -19,11 +19,11 @@ const createVariable = (data) => {
         owner: ownerName,
         repo: repoName,
         name: name,
-        value: data
+        value: value
     })
 }
 
-const setVariable = (data) => {
+const setVariable = (value) => {
 
     let url = 'PATCH '
     url += "/repos/" + repoName
@@ -33,11 +33,11 @@ const setVariable = (data) => {
         owner: ownerName,
         repo: repoName,
         name: name,
-        value: data
+        value: value
     })
 }
 
-const getVariable = (varname) => {
+const getVariable = (value) => {
 
     let url = 'GET '
     url += "/repos/" + repoName
@@ -50,9 +50,26 @@ const getVariable = (varname) => {
     })
 }
 
+const exists = () => {
+    getVariable(name).then((res) => {
+        return true;
+    }).catch((err) => {
+        return false;
+    }) 
+}
 
-getVariable(name).then((res) => {
-    setVariable(value)
-}).catch((err) => {
-    createVariable(value)
-})
+
+const increment = () => {  
+    if (exists()){
+        let variable = getVariable(name)
+        if( variable.value.match(/^[0-9]+$/) ) {
+            setVariable(variable.value + 1)
+        }
+    }
+    else {
+        createVariable(1)
+    }
+}
+
+
+increment()

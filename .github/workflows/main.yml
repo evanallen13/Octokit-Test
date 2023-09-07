@@ -21,16 +21,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: print something
-        run: |
-         echo ${{ github.repository_id }}
-         echo ${{ github.repository_owner  }}
-
-      
       - name: Run Node App
         env:
-            NAME: "This is a test"
-            VALUE: "Something else"
+            NAME: "VERSION"
             PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
             REPO: ${{ github.repository }}
             OWNER: ${{ github.repository_owner }}
