@@ -6,8 +6,8 @@ const value = process.env.VALUE
 const token = process.env.PAT_TOKEN
 const octokit = github.getOctokit(token);
 
-const repoName = "ActionContainer";
-const ownerName = "evanallen13";
+const repoName = process.env.REPO;
+const ownerName = process.env.OWNER;
 
 const createVariable = (data) => {
 
@@ -51,7 +51,6 @@ const getVariable = (varname) => {
 }
 
 
-console.log("Setting variable: " + name)
 getVariable(name).then((res) => {
     setVariable(value)
 }).catch((err) => {

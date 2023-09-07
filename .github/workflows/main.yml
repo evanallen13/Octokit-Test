@@ -1,5 +1,8 @@
 name: 'Variable Manipulation'
 on: 
+  push:
+    branches: [ main ]
+    
   workflow_dispatch:
 
 jobs:
@@ -10,25 +13,20 @@ jobs:
       
       - uses: actions/checkout@v3
 
-      - name: Use Node.js 20.x
+      - name: Set Up Node
         uses: actions/setup-node@v3
         with:
           node-version: 20.x
 
       - name: Install dependencies
         run: npm install
-
-      # - name: Run the build script
-      #   run: NAME="Something" VALUE="Something else" PAT_TOKEN=${{ secrets.PAT_TOKEN }} node index.js
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-      #     NAME: "Something"
-      #     VALUE: "Something else"
       
-      - name: Run Node.js application
+      - name: Run Node App
         env:
             NAME: "This is a test"
             VALUE: "Something else"
             PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+            REPO: ${{ github.repository }}
+            OWNER: ${{ github.repository_owner }}
         run: |
           npm start
