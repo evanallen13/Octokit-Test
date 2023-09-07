@@ -1,7 +1,7 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
 
-const name = process.env.NAME
+const name = process.env.NAME.replace(/\s/g, '_') 
 const value = process.env.VALUE
 const token = process.env.PAT_TOKEN
 const octokit = github.getOctokit(token);
