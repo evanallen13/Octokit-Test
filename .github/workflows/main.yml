@@ -2,7 +2,7 @@ name: 'Variable Manipulation'
 on: 
   push:
     branches: [ main ]
-    
+
   workflow_dispatch:
 
 jobs:
@@ -20,13 +20,19 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-      
-      - name: Run Node App
-        env:
-            NAME: "This is a test"
-            VALUE: "Something else"
-            PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-            REPO: ${{ github.repository }}
-            OWNER: ${{ github.repository_owner }}
+
+      - name: print something
         run: |
-          npm start
+         echo ${{ github.repository }}
+         echo ${{ github.repository_owner  }}
+
+      
+      # - name: Run Node App
+      #   env:
+      #       NAME: "This is a test"
+      #       VALUE: "Something else"
+      #       PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+      #       REPO: ${{ github.repository }}
+      #       OWNER: ${{ github.repository_owner }}
+      #   run: |
+      #     npm start
