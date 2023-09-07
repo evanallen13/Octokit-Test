@@ -1,7 +1,7 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
 
-const name = process.env.NAME.replace(/\s/g, '_') 
+const name = process.env.NAME.replace(/\s/g, '_')
 const value = process.env.VALUE
 const token = process.env.PAT_TOKEN
 const octokit = github.getOctokit(token);
@@ -50,24 +50,33 @@ const getVariable = (varname) => {
     })
 }
 
-const exists = () => {
-    getVariable(name).then((res) => {
-        return true;
-    }).catch((err) => {
-        return false;
-    }) 
+const exists = async () => {
+    let exists = false;
+
+    try {
+        const response = await getVariable(name)
+        exists = (response.status === 200) ? true : false
+    } catch (error) {
+        exists = false
+    }
+
+    return exists
 }
 
 
-const increment = () => {  
-    if (exists()){
-        let variable = getVariable(name)
-        if( variable.value.match(/^[0-9]+$/) ) {
-            setVariable(parseInt(variable.value) + 1)
+const increment = async () => {
+    const doesExist = await exists()
+
+    if (doesExist) {
+        let variable = await getVariable(name)
+        variable = variable.data.value
+        if (variable.match(/^[0-9]+$/)) {
+            variable = (parseInt(variable) + 1).toString()
+            setVariable(variable)
         }
     }
     else {
-        createVariable(1)
+        createVariable((1).toString())
     }
 }
 
