@@ -30,4 +30,8 @@ jobs:
             NAME: "Something for the application"
             VALUE: "Something else"
             PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-        run: npm start
+        run: |
+          touch .env
+          echo PAT_TOKEN=${{ secrets.PAT_TOKEN }} >> .env
+          echo ENV_VAR_2=$ENV_VAR_2 >> .env
+          npm start
