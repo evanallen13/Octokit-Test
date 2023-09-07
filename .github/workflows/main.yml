@@ -1,0 +1,13 @@
+name: 'Variable Manipulation'
+on: 
+  workflow_dispatch:
+
+jobs:
+  echo-message:
+    environment: ${{ github.ref_name }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Message
+        run: |
+          echo ${{ vars.hello }}
+          echo ${{ vars.VERSION }}
