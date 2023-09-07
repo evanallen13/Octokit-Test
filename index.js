@@ -37,7 +37,7 @@ const setVariable = (value) => {
     })
 }
 
-const getVariable = (value) => {
+const getVariable = (varname) => {
 
     let url = 'GET '
     url += "/repos/" + repoName
