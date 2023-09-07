@@ -24,3 +24,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
           NAME: "Something"
           VALUE: "Something else"
+      
+      - name: Run Node.js application
+        env:
+            NAME: "Something for the application"
+            VALUE: "Something else"
+            PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: npm start
