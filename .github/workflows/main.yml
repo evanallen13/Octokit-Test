@@ -3,11 +3,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  echo-message:
-    environment: ${{ github.ref_name }}
+  run-node:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Echo Message
-        run: |
-          echo ${{ vars.hello }}
-          echo ${{ vars.VERSION }}
+      
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run the build script
+        run: start
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          NAME: "Something"
+          VALUE: "Something else"
