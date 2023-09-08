@@ -63,17 +63,17 @@ export class EnvironmentVariable {
 
     incrementEnvironmentVariable = async () => {
         const doesExist = await this.existsEnvironmentVariable()
-        console.log(doesExist)
-        // if (doesExist) {
-        //     let variable = await getVariable(name)
-        //     variable = variable.data.value
-        //     if (variable.match(/^[0-9]+$/)) {
-        //         variable = (parseInt(variable) + 1).toString()
-        //         setVariable(variable)
-        //     }
-        // }
-        // else {
-        //     createVariable((1).toString())
-        // }
+
+        if (doesExist) {
+            let variable = await this.getEnvironmentVariable(name)
+            variable = variable.data.value
+            if (variable.match(/^[0-9]+$/)) {
+                variable = (parseInt(variable) + 1).toString()
+                setVariable(variable)
+            }
+        }
+        else {
+            this.createEnvironmentVariable((1).toString())
+        }
     }
 }
