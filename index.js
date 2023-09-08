@@ -87,7 +87,6 @@ const run = async () => {
     const ev = new EnvironmentVariable();
     // const response = await ev.getEnvironmentVariable()
     // console.log(response.data)
-    
     ev.incrementEnvironmentVariable()
 }
 
