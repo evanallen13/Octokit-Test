@@ -81,14 +81,26 @@ const increment = async () => {
     }
 }
 
-const getEnv = async () => {
+const getEnv = async (varname) => {
     const response = await octokit.rest.actions.getEnvironmentSecret({
         repository_id: "688581388",
         environment_name: "main", 
-        secret_name: "hello", 
+        secret_name: "HELLO", 
     });
+
+    // url : 'https://api.github.com/repositories/evanallen13%2FOctokit-Test/environments/main/secrets/hello'
+    // url : /repos/evanallen13/Octokit-Test/actions/variables/VERSION
+    // let url = 'GET '
+    // url += "/repos/" + repoName
+    // url += "/environments/main/secrets/hello"
+
+    // return octokit.request(url, {
+    //     owner: ownerName,
+    //     repo: repoName,
+    //     name: name
+    // })
 }
 
 
 // increment()
-getEnv()
+getEnv("VERSION")
