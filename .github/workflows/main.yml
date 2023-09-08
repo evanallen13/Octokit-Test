@@ -30,5 +30,6 @@ jobs:
             PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
             REPO: ${{ github.repository }}
             OWNER: ${{ github.repository_owner }}
+            REPO_ID: ${{ github.repository_id }}
         run: |
           npm start
