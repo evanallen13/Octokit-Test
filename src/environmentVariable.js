@@ -38,7 +38,7 @@ export class EnvironmentVariable {
     }
 
     updateEnvironmentVariable = async () => {
-        let url = `PATCH /repositories/${repoId}/environments/${environmentName}/variables/${name}`
+        let url = `PATCH /repositories/${repoId}/environments/${environmentName}/variables/${name}/value${value}`
 
         return octokit.request(url, {   
             owner: ownerName,
