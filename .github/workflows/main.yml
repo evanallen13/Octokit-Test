@@ -26,7 +26,7 @@ jobs:
 
       - name: Run Node App
         env:
-          NAME: "HELLOTHERE"
+          NAME: "HELLO"
           VALUE: "WORLD"
           ENVIRONMENT_NAME: "main"
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
