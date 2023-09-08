@@ -83,7 +83,7 @@ const increment = async () => {
 
 const getEnv = async () => {
     const response = await octokit.rest.actions.getEnvironmentSecret({
-        repository_id: "evanallen13" + "/" + "Octokit-Test",
+        repository_id: "688581388",
         environment_name: "main", 
         secret_name: "hello", 
     });
