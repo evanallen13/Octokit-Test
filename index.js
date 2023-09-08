@@ -42,19 +42,7 @@ const getVariable = (varname) => {
     let url = 'GET '
     url += "/repos/" + repoName
     url += '/actions/variables/' + varname
-
-    return octokit.request(url, {
-        owner: ownerName,
-        repo: repoName,
-        name: name
-    })
-}
-
-const getSecret = (varname) => {
-
-    let url = 'GET '
-    url += "/repos/" + repoName
-    url += '/actions/secrets/' + varname
+    console.log(url)
 
     return octokit.request(url, {
         owner: ownerName,
@@ -93,6 +81,14 @@ const increment = async () => {
     }
 }
 
+const getEnv = async () => {
+    const response = await octokit.rest.actions.getEnvironmentSecret({
+        repository_id: "evanallen13" + "/" + "Octokit-Test",
+        environment_name: "main", 
+        secret_name: "hello", 
+    });
+}
+
 
 // increment()
-getSecret("PAT_TOKEN")
+getEnv()
