@@ -69,7 +69,7 @@ export class EnvironmentVariable {
             variable = variable.data.value
             if (variable.match(/^[0-9]+$/)) {
                 variable = (parseInt(variable) + 1).toString()
-                setVariable(variable)
+                this.updateEnvironmentVariable(variable)
             }
         }
         else {
