@@ -37,7 +37,7 @@ export class EnvironmentVariable {
         })
     }
 
-    updateEnvironmentVariable = async () => {
+    updateEnvironmentVariable = async (value=name) => {
 
         let url = `PATCH /repositories/${repoId}/environments/${environmentName}/variables/${name}`
 
