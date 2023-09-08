@@ -13,23 +13,23 @@ const environmentName = process.env.ENVIRONMENT_NAME;
 
 export class EnvironmentVariable {
 
-    exists = async () => {
+    existsEnvironmentVariable = async () => {
         let exists = false;
-    
+
         try {
             const response = await getEnvironmentVariable()
             exists = (response.status === 200) ? true : false
         } catch (error) {
             exists = false
         }
-    
+
         return exists
     }
-    
+
     getEnvironmentVariable = async () => {
-    
+
         let url = `GET /repositories/${repoId}/environments/${environmentName}/variables/${name}`
-    
+
         return octokit.request(url, {
             owner: ownerName,
             repo: repoName,
@@ -38,10 +38,10 @@ export class EnvironmentVariable {
     }
 
     updateEnvironmentVariable = async () => {
-        
+
         let url = `PATCH /repositories/${repoId}/environments/${environmentName}/variables/${name}`
 
-        return octokit.request(url, {   
+        return octokit.request(url, {
             owner: ownerName,
             repo: repoName,
             name: name,
@@ -50,14 +50,30 @@ export class EnvironmentVariable {
     }
 
     createEnvironmentVariable = async () => {
-        
+
         let url = `POST /repositories/${repoId}/environments/${environmentName}/variables`
-    
+
         return octokit.request(url, {
             owner: ownerName,
             repo: repoName,
             name: name,
             value: value
         })
+    }
+
+    incrementEnvironmentVariable = async () => {
+        const doesExist = await this.existsEnvironmentVariable()
+        console.log(doesExist)
+        // if (doesExist) {
+        //     let variable = await getVariable(name)
+        //     variable = variable.data.value
+        //     if (variable.match(/^[0-9]+$/)) {
+        //         variable = (parseInt(variable) + 1).toString()
+        //         setVariable(variable)
+        //     }
+        // }
+        // else {
+        //     createVariable((1).toString())
+        // }
     }
 }
