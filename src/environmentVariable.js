@@ -39,7 +39,7 @@ export class EnvironmentVariable {
 
     createEnvironmentVariable = async () => {
         
-        let url = `POST /repositories/${repoId}/environments/${environmentName}/variables`
+        let url = `POST /repositories/${repoId}/environments/${environmentName}/variables/${name}`
     
         return octokit.request(url, {
             owner: ownerName,
