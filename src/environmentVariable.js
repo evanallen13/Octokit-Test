@@ -17,7 +17,8 @@ export class EnvironmentVariable {
         let exists = false;
 
         try {
-            const response = await getEnvironmentVariable()
+            const response = await this.getEnvironmentVariable()
+            console.log(response)
             exists = (response.status === 200) ? true : false
         } catch (error) {
             exists = false
