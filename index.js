@@ -85,7 +85,7 @@ import { getEnvironmentVariable } from "./src/environment.js";
 // increment()
 const run = async () => {
     const response = await getEnvironmentVariable("HELLO")
-    console.log(response)
+    console.log(response.data)
 }
 
 run()
