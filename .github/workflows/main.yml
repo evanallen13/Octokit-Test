@@ -26,7 +26,7 @@ jobs:
 
       - name: Run Node App
         env:
-            NAME: "HELLO"
+            NAME: "HELLO WORLD"
             PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
             REPO: ${{ github.repository }}
             OWNER: ${{ github.repository_owner }}
