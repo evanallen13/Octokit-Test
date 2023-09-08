@@ -31,5 +31,6 @@ jobs:
             REPO: ${{ github.repository }}
             OWNER: ${{ github.repository_owner }}
             REPO_ID: ${{ github.repository_id }}
+            ENVIRONMENT_NAME: "main"
         run: |
           npm start
