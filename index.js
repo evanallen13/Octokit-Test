@@ -1,4 +1,4 @@
-import { getEnvironmentVariable } from "./src/environment.js";
+import { EnvironmentVariable } from "./src/environmentVariable.js";
 
 // const name = process.env.NAME.replace(/\s/g, '_')
 // const value = process.env.VALUE
@@ -84,7 +84,8 @@ import { getEnvironmentVariable } from "./src/environment.js";
 
 // increment()
 const run = async () => {
-    const response = await getEnvironmentVariable("HELLO")
+    const ev = new EnvironmentVariable();
+    const response = await ev.getEnvironmentVariable()
     console.log(response.data)
 }
 
