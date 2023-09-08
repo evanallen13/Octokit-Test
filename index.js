@@ -50,6 +50,19 @@ const getVariable = (varname) => {
     })
 }
 
+const getSecret = (varname) => {
+
+    let url = 'GET '
+    url += "/repos/" + repoName
+    url += '/actions/secrets/' + varname
+
+    return octokit.request(url, {
+        owner: ownerName,
+        repo: repoName,
+        name: name
+    })
+}
+
 const exists = async () => {
     let exists = false;
 
@@ -81,4 +94,5 @@ const increment = async () => {
 }
 
 
-increment()
+// increment()
+getSecret("PAT_TOKEN")
