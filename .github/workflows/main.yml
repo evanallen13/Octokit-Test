@@ -24,11 +24,11 @@ jobs:
       - name: echo id
         run: echo ${{ github.repository_id }}
 
-      # - name: Run Node App
-      #   env:
-      #       NAME: "VERSION"
-      #       PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-      #       REPO: ${{ github.repository }}
-      #       OWNER: ${{ github.repository_owner }}
-      #   run: |
-      #     npm start
+      - name: Run Node App
+        env:
+            NAME: "VERSION"
+            PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+            REPO: ${{ github.repository }}
+            OWNER: ${{ github.repository_owner }}
+        run: |
+          npm start
