@@ -13,6 +13,8 @@ jobs:
       
       - uses: actions/checkout@v3
 
+      - uses: evanallen13/increment-environment-variable
+      
       - name: Set Up Node
         uses: actions/setup-node@v3
         with:

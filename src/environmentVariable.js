@@ -30,7 +30,6 @@ export class EnvironmentVariable {
         for (const environment of allEnvironments.data.environments) {
             this.updateEnvironmentVariable(environment.name, value)
         }
-
     }
 
     existsEnvironmentVariable = async () => {
@@ -85,7 +84,7 @@ export class EnvironmentVariable {
         const doesExist = await this.existsEnvironmentVariable()
 
         if (doesExist) {
-            let variable = await this.getEnvironmentVariable(name)
+            let variable = await this.getEnvironmentVariable()
             variable = variable.data.value
             if (variable.match(/^[0-9]+$/)) {
                 variable = (parseInt(variable) + 1).toString()
