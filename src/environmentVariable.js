@@ -6,7 +6,7 @@ const value = process.env.VALUE
 const token = process.env.PAT_TOKEN
 const octokit = getOctokit(token);
 
-const repoName = process.env.REPO;
+const repoName = process.env.REPO_NAME;
 const ownerName = process.env.OWNER;
 const repoId = process.env.REPO_ID;
 const environmentName = process.env.ENVIRONMENT_NAME;
