@@ -13,7 +13,7 @@ jobs:
       
       - uses: actions/checkout@v3
 
-      - uses: evanallen13/Increment-EnvironmentVariable@1.0.0
+      - uses: evanallen13/Increment-EnvironmentVariable@1.0.1
         with:
           name: "Evan"
       
