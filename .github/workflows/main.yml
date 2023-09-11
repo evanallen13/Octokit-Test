@@ -27,7 +27,7 @@ jobs:
       - name: Run Node App
         env:
           NAME: "VERSION"
-          VALUE: "WORLD"
+          VALUE: "101"
           ENVIRONMENT_NAME: "main"
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
           REPO_ID: ${{ github.repository_id }}

@@ -28,8 +28,7 @@ export class EnvironmentVariable {
         const allEnvironments = await this.getAllEnvironments()
 
         for (const environment of allEnvironments.data.environments) {  
-            const version = await this.getEnvironmentVariable(environment.name)
-            console.log("Version: " + version.data.value)
+            this.updateEnvironmentVariable(environment.name, value)
         }
 
     }
@@ -70,7 +69,7 @@ export class EnvironmentVariable {
         })
     }
 
-    createEnvironmentVariable = async () => {
+    createEnvironmentVariable = async (environmentName=environmentName, value=name) => {
 
         let url = `POST /repositories/${repoId}/environments/${environmentName}/variables`
 
