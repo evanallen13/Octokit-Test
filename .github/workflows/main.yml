@@ -32,4 +32,4 @@ jobs:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
           REPO_ID: ${{ github.repository_id }}
         run: |
-          npx run-func index.js run2
+          npm start
