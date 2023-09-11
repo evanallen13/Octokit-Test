@@ -1,17 +1,17 @@
 // import { getInput, setFailed } from "@actions/core";
 import { context, getOctokit } from "@actions/github";
 
-const name = process.env.NAME.replace(/\s/g, '_')
-const value = process.env.VALUE
-const token = process.env.PAT_TOKEN
-const octokit = getOctokit(token);
-
-const repoName = process.env.REPO_NAME;
-const ownerName = process.env.OWNER;
-const repoId = process.env.REPO_ID;
-const environmentName = process.env.ENVIRONMENT_NAME;
-
 export class EnvironmentVariable {
+    constructor() { 
+        this.name = process.env.NAME.replace(/\s/g, '_');
+        this.value = process.env.VALUE;
+        this.token = process.env.PAT_TOKEN;
+        this.octokit = getOctokit(token);
+        this.repoName = process.env.REPO_NAME;
+        this.ownerName = process.env.OWNER;
+        this.repoId = process.env.REPO_ID;
+        this.environmentName = process.env.ENVIRONMENT_NAME;
+    }
 
     getAllEnvironments = async () => {
         let url = `GET /repos/${repoName}/environments`
@@ -23,11 +23,11 @@ export class EnvironmentVariable {
         })
     }
 
-    setVariableInAllEnvironments = async (value=value) => {
+    setVariableInAllEnvironments = async (value = this.value) => {
 
         const allEnvironments = await this.getAllEnvironments()
 
-        for (const environment of allEnvironments.data.environments) {  
+        for (const environment of allEnvironments.data.environments) {
             this.updateEnvironmentVariable(environment.name, value)
         }
 
@@ -46,7 +46,7 @@ export class EnvironmentVariable {
         return exists
     }
 
-    getEnvironmentVariable = async (environmentName=environmentName) => {
+    getEnvironmentVariable = async (environmentName = this.environmentName) => {
 
         let url = `GET /repositories/${repoId}/environments/${environmentName}/variables/${name}`
 
@@ -57,7 +57,7 @@ export class EnvironmentVariable {
         })
     }
 
-    updateEnvironmentVariable = async (environmentName=environmentName, value=name) => {
+    updateEnvironmentVariable = async (environmentName = this.environmentName, value = this.value) => {
 
         let url = `PATCH /repositories/${repoId}/environments/${environmentName}/variables/${name}`
 
@@ -69,7 +69,7 @@ export class EnvironmentVariable {
         })
     }
 
-    createEnvironmentVariable = async (environmentName=environmentName, value=name) => {
+    createEnvironmentVariable = async (environmentName = this.environmentName, value=this.value) => {
 
         let url = `POST /repositories/${repoId}/environments/${environmentName}/variables`
 
