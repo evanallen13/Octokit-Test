@@ -29,7 +29,7 @@ export class EnvironmentVariable {
 
         for (const environment of allEnvironments.data.environments) {  
             const version = await this.getEnvironmentVariable(environment.name)
-            console.log("Version: " + version)
+            console.log("Version: " + version.data.value)
         }
 
     }
