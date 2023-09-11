@@ -6,7 +6,7 @@ export class EnvironmentVariable {
         this.name = process.env.NAME.replace(/\s/g, '_');
         this.value = process.env.VALUE;
         this.token = process.env.PAT_TOKEN;
-        this.octokit = getOctokit(token);
+        this.octokit = getOctokit(this.token);
         this.repoName = process.env.REPO_NAME;
         this.ownerName = process.env.OWNER;
         this.repoId = process.env.REPO_ID;
