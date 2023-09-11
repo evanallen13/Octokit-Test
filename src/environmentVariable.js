@@ -23,6 +23,16 @@ export class EnvironmentVariable {
         })
     }
 
+    setVariableInAllEnvironments = async (value=name) => {
+
+        const allEnvironments = await this.getAllEnvironments()
+
+        for (const environment of allEnvironments.data.environments) {  
+            console.log(environment.name)
+        }
+
+    }
+
     existsEnvironmentVariable = async () => {
         let exists = false;
 
@@ -47,7 +57,7 @@ export class EnvironmentVariable {
         })
     }
 
-    updateEnvironmentVariable = async (value=name) => {
+    updateEnvironmentVariable = async (environmentName=environmentName, value=name) => {
 
         let url = `PATCH /repositories/${repoId}/environments/${environmentName}/variables/${name}`
 
