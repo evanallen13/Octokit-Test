@@ -89,7 +89,7 @@ const run = async () => {
     // console.log(response.data)
     // ev.incrementEnvironmentVariable()
     const allEv = await ev.getAllEnvironments()
-    console.log(allEv.environments)
+    console.log(allEv.data.environments)
 }
 
 run()
