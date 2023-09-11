@@ -1,5 +1,6 @@
 // import { getInput, setFailed } from "@actions/core";
 import { context, getOctokit } from "@actions/github";
+import OctoKit from "./octoKit.js"
 
 const name = process.env.NAME.replace(/\s/g, '_')
 const value = process.env.VALUE
@@ -12,6 +13,16 @@ const repoId = process.env.REPO_ID;
 const environmentName = process.env.ENVIRONMENT_NAME;
 
 export class EnvironmentVariable {
+
+    getAllEnvironments = async () => {
+        let url = `"GET /repos/${repoId}/branches/main/protection/required_status_checks/contexts"`
+
+        return octokit.request(url, {
+            owner: ownerName,
+            repo: repoName,
+            name: name
+        })
+    }
 
     existsEnvironmentVariable = async () => {
         let exists = false;
