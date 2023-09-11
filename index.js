@@ -13,5 +13,3 @@ const run2 = async () => {
     console.log('run2')
 }
 
-
-module.exports = { run, run2 }
