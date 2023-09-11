@@ -14,7 +14,7 @@ const environmentName = process.env.ENVIRONMENT_NAME;
 export class EnvironmentVariable {
 
     getAllEnvironments = async () => {
-        let url = `GET /repos/${repoId}/environments`
+        let url = `GET /repos/${repoName}/environments`
 
         return octokit.request(url, {
             owner: ownerName,
