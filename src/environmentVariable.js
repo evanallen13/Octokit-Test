@@ -23,7 +23,7 @@ export class EnvironmentVariable {
         })
     }
 
-    setVariableInAllEnvironments = async (value=name) => {
+    setVariableInAllEnvironments = async (value=value) => {
 
         const allEnvironments = await this.getAllEnvironments()
 
