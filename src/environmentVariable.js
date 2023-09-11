@@ -81,7 +81,7 @@ export class EnvironmentVariable {
         })
     }
 
-    incrementEnvironmentVariable = async () => {
+    incrementEnvironmentVariable = async (environmentName = this.environmentName, value=this.value, repoId=this.repoId, repoName=this.repoName, name=this.name, ownerName=this.ownerName) => {
         const doesExist = await this.existsEnvironmentVariable()
 
         if (doesExist) {
@@ -89,11 +89,11 @@ export class EnvironmentVariable {
             variable = variable.data.value
             if (variable.match(/^[0-9]+$/)) {
                 variable = (parseInt(variable) + 1).toString()
-                this.updateEnvironmentVariable(variable)
+                this.updateEnvironmentVariable(environmentName = this.environmentName, value = this.value, name=this.name, repoName=this.repoName, repoId=this.repoId, ownerName=this.ownerName)
             }
         }
         else {
-            this.createEnvironmentVariable((1).toString())
+            this.createEnvironmentVariable((environmentName = this.environmentName, value=1, repoId=this.repoId, repoName=this.repoName, name=this.name, ownerName=this.ownerName).toString())
         }
     }
 }
