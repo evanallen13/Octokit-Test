@@ -16,7 +16,7 @@ export class EnvironmentVariable {
     getAllEnvironments = async (repoName=this.repoName) => {
         let url = `GET /repos/${repoName}/environments`
 
-        return octokit.request(url, {
+        return this.octokit.request(url, {
             owner: ownerName,
             repo: repoName,
             name: name
@@ -50,7 +50,7 @@ export class EnvironmentVariable {
 
         let url = `GET /repositories/${repoId}/environments/${environmentName}/variables/${name}`
 
-        return octokit.request(url, {
+        return this.octokit.request(url, {
             owner: ownerName,
             repo: repoName,
             name: name
@@ -61,7 +61,7 @@ export class EnvironmentVariable {
 
         let url = `PATCH /repositories/${repoId}/environments/${environmentName}/variables/${name}`
 
-        return octokit.request(url, {
+        return this.octokit.request(url, {
             owner: ownerName,
             repo: repoName,
             name: name,
@@ -73,7 +73,7 @@ export class EnvironmentVariable {
 
         let url = `POST /repositories/${repoId}/environments/${environmentName}/variables`
 
-        return octokit.request(url, {
+        return this.octokit.request(url, {
             owner: ownerName,
             repo: repoName,
             name: name,
