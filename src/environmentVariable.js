@@ -1,36 +1,34 @@
-// import { getInput, setFailed } from "@actions/core";
 import { context, getOctokit } from "@actions/github";
 
-export class EnvironmentVariable {
-    constructor() { 
-        this.name = process.env.NAME.replace(/\s/g, '_');
-        this.value = process.env.VALUE;
-        this.token = process.env.PAT_TOKEN;
-        this.octokit = getOctokit(this.token);
-        this.repoName = process.env.REPO_NAME;
-        this.ownerName = process.env.OWNER;
-        this.repoId = process.env.REPO_ID;
-        this.environmentName = process.env.ENVIRONMENT_NAME;
-    }
+const name = process.env.NAME.replace(/\s/g, '_')
+const value = process.env.VALUE
+const token = process.env.PAT_TOKEN
+const octokit = getOctokit(token);
 
-    getAllEnvironments = async (repoName=this.repoName,ownerName=this.ownerName, name=this.name) => {
+const repoName = process.env.REPO_NAME;
+const ownerName = process.env.OWNER;
+const repoId = process.env.REPO_ID;
+const environmentName = process.env.ENVIRONMENT_NAME;
+
+export class EnvironmentVariable {
+
+    getAllEnvironments = async () => {
         let url = `GET /repos/${repoName}/environments`
 
-        return this.octokit.request(url, {
+        return octokit.request(url, {
             owner: ownerName,
             repo: repoName,
             name: name
         })
     }
 
-    setVariableInAllEnvironments = async (value = this.value) => {
+    setVariableInAllEnvironments = async (value=name) => {
 
         const allEnvironments = await this.getAllEnvironments()
 
-        for (const environment of allEnvironments.data.environments) {
+        for (const environment of allEnvironments.data.environments) {  
             this.updateEnvironmentVariable(environment.name, value)
         }
-
     }
 
     existsEnvironmentVariable = async () => {
@@ -46,22 +44,22 @@ export class EnvironmentVariable {
         return exists
     }
 
-    getEnvironmentVariable = async (environmentName = this.environmentName, repoId = this.repoId, repoName=this.repoName, name=this.name, ownerName=this.ownerName) => {
+    getEnvironmentVariable = async (environmentName=environmentName) => {
 
         let url = `GET /repositories/${repoId}/environments/${environmentName}/variables/${name}`
 
-        return this.octokit.request(url, {
+        return octokit.request(url, {
             owner: ownerName,
             repo: repoName,
             name: name
         })
     }
 
-    updateEnvironmentVariable = async (environmentName = this.environmentName, value = this.value, name=this.name, repoName=this.repoName, repoId=this.repoId, ownerName=this.ownerName) => {
+    updateEnvironmentVariable = async (environmentName=environmentName, value=name) => {
 
         let url = `PATCH /repositories/${repoId}/environments/${environmentName}/variables/${name}`
 
-        return this.octokit.request(url, {
+        return octokit.request(url, {
             owner: ownerName,
             repo: repoName,
             name: name,
@@ -69,11 +67,11 @@ export class EnvironmentVariable {
         })
     }
 
-    createEnvironmentVariable = async (environmentName = this.environmentName, value=this.value, repoId=this.repoId, repoName=this.repoName, name=this.name, ownerName=this.ownerName) => {
+    createEnvironmentVariable = async (environmentName=environmentName, value=name) => {
 
         let url = `POST /repositories/${repoId}/environments/${environmentName}/variables`
 
-        return this.octokit.request(url, {
+        return octokit.request(url, {
             owner: ownerName,
             repo: repoName,
             name: name,
@@ -81,7 +79,7 @@ export class EnvironmentVariable {
         })
     }
 
-    incrementEnvironmentVariable = async (environmentName = this.environmentName, value=this.value, repoId=this.repoId, repoName=this.repoName, name=this.name, ownerName=this.ownerName) => {
+    incrementEnvironmentVariable = async () => {
         const doesExist = await this.existsEnvironmentVariable()
 
         if (doesExist) {
@@ -89,11 +87,11 @@ export class EnvironmentVariable {
             variable = variable.data.value
             if (variable.match(/^[0-9]+$/)) {
                 variable = (parseInt(variable) + 1).toString()
-                this.updateEnvironmentVariable(environmentName = this.environmentName, value = this.value, name=this.name, repoName=this.repoName, repoId=this.repoId, ownerName=this.ownerName)
+                this.updateEnvironmentVariable(variable)
             }
         }
         else {
-            this.createEnvironmentVariable((environmentName = this.environmentName, value=1, repoId=this.repoId, repoName=this.repoName, name=this.name, ownerName=this.ownerName).toString())
+            this.createEnvironmentVariable((1).toString())
         }
     }
 }
