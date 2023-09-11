@@ -9,7 +9,4 @@ const run = async () => {
     console.log(allEv.data.environments)
 }
 
-const run2 = async () => {  
-    console.log('run2')
-}
-
+run()
