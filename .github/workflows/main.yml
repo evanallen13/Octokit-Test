@@ -31,5 +31,6 @@ jobs:
           ENVIRONMENT_NAME: "main"
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
           REPO_ID: ${{ github.repository_id }}
+          REPO_NAME: ${{ github.repository }}
         run: |
           npm start
