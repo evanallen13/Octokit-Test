@@ -23,7 +23,7 @@ export class EnvironmentVariable {
         })
     }
 
-    setVariableInAllEnvironments = async (value=name) => {
+    setVariableInAllEnvironments = async (value=value) => {
 
         const allEnvironments = await this.getAllEnvironments()
 
@@ -56,7 +56,7 @@ export class EnvironmentVariable {
         })
     }
 
-    updateEnvironmentVariable = async (environmentName=environmentName, value=name) => {
+    updateEnvironmentVariable = async (environmentName=environmentName, value=value) => {
 
         let url = `PATCH /repositories/${repoId}/environments/${environmentName}/variables/${name}`
 
@@ -68,7 +68,7 @@ export class EnvironmentVariable {
         })
     }
 
-    createEnvironmentVariable = async (environmentName=environmentName, value=name) => {
+    createEnvironmentVariable = async (environmentName=environmentName, value=value) => {
 
         let url = `POST /repositories/${repoId}/environments/${environmentName}/variables`
 
