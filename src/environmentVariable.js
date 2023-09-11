@@ -1,6 +1,5 @@
 // import { getInput, setFailed } from "@actions/core";
 import { context, getOctokit } from "@actions/github";
-import OctoKit from "./octoKit.js"
 
 const name = process.env.NAME.replace(/\s/g, '_')
 const value = process.env.VALUE
