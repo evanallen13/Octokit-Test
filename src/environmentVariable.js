@@ -46,7 +46,7 @@ export class EnvironmentVariable {
         return exists
     }
 
-    getEnvironmentVariable = async (environmentName = this.environmentName, repoId = this.repoId, name=this.name, ownerName=this.ownerName) => {
+    getEnvironmentVariable = async (environmentName = this.environmentName, repoId = this.repoId, reponame=this.repoName, name=this.name, ownerName=this.ownerName) => {
 
         let url = `GET /repositories/${repoId}/environments/${environmentName}/variables/${name}`
 
@@ -57,7 +57,7 @@ export class EnvironmentVariable {
         })
     }
 
-    updateEnvironmentVariable = async (environmentName = this.environmentName, value = this.value, name=this.name, repoId=this.repoId, ownerName=this.ownerName) => {
+    updateEnvironmentVariable = async (environmentName = this.environmentName, value = this.value, name=this.name, reponame=this.repoName, repoId=this.repoId, ownerName=this.ownerName) => {
 
         let url = `PATCH /repositories/${repoId}/environments/${environmentName}/variables/${name}`
 
@@ -69,7 +69,7 @@ export class EnvironmentVariable {
         })
     }
 
-    createEnvironmentVariable = async (environmentName = this.environmentName, value=this.value, repoId=this.repoId, name=this.name, ownerName=this.ownerName) => {
+    createEnvironmentVariable = async (environmentName = this.environmentName, value=this.value, repoId=this.repoId, reponame=this.repoName, name=this.name, ownerName=this.ownerName) => {
 
         let url = `POST /repositories/${repoId}/environments/${environmentName}/variables`
 
