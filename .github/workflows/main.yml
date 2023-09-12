@@ -13,7 +13,7 @@ jobs:
       
       - uses: actions/checkout@v3
 
-      - uses: evanallen13/Increment-EnvironmentVariable@v5
+      - uses: evanallen13/Increment-EnvironmentVariable@v6
         with:
           name: "VERSION"
           RepoId: ${{ github.repository_id }}
