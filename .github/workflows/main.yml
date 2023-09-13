@@ -14,9 +14,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Increment Environment Variable
-        uses: evanallen13/Increment-Environment-Variable@v1003
+        uses: evanallen13/Increment-Environment-Variable@v1004
         with:
           Name: "VERSION"
+          VALUE: "1"
           RepoId: ${{ github.repository_id }}
           EnvironmentName: "main"
           OwnerName: ${{ github.repository_owner }}
