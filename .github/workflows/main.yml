@@ -14,13 +14,14 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Increment Environment Variable
-        uses: evanallen13/Increment-Environment-Variable@v1000
+        uses: evanallen13/Increment-Environment-Variable@v1001
         with:
           Name: "VERSION"
           RepoId: ${{ github.repository_id }}
           EnvironmentName: "main"
           OwnerName: ${{ github.repository_owner }}
           RepoName: "Octokit-Test"
+          Token: ${{ secrets.PAT_TOKEN }}
       
       
       - name: Set Up Node
