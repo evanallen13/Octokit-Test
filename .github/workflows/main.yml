@@ -17,7 +17,7 @@ jobs:
         uses: evanallen13/Increment-Environment-Variable@v1006
         with:
           Name: "VERSION"
-          Value: "1"
+          Value: "109"
           RepoId: ${{ github.repository_id }}
           EnvironmentName: "main"
           OwnerName: ${{ github.repository_owner }}
@@ -36,13 +36,13 @@ jobs:
       - name: echo id
         run: echo ${{ github.repository_id }}
 
-      - name: Release
-        env:
-          NAME: "VERSION"
-          VALUE: "105"
-          ENVIRONMENT_NAME: "main"
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-          REPO_ID: ${{ github.repository_id }}
-          REPO_NAME: ${{ github.repository }}
-        run: |
-          npm start
+      # - name: Release
+      #   env:
+      #     NAME: "VERSION"
+      #     VALUE: "105"
+      #     ENVIRONMENT_NAME: "main"
+      #     PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+      #     REPO_ID: ${{ github.repository_id }}
+      #     REPO_NAME: ${{ github.repository }}
+      #   run: |
+      #     npm start
