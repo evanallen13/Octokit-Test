@@ -24,7 +24,7 @@ jobs:
       
       
       - name: Set Up Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v999
         with:
           node-version: 20.x
 
