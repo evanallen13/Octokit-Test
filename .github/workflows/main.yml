@@ -16,7 +16,7 @@ jobs:
       - name: Increment Environment Variable
         uses: evanallen13/Increment-Environment-Variable@v1014
         with:
-          Name: "something"
+          Name: "somethingelse"
           Value: "205"
           RepoId: ${{ github.repository_id }}
           EnvironmentName: "main"
